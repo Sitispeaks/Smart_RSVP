@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %} Welcome Page {% endblock %}
+{%block body%}
+
+   <div class="container">
+       <h1>Dear, <span style="color:#45CE30">{{name}}</span></h1>
+       <h2>You are invited to, <span style="color:#4834DF">{{function}} - {{desc}}</span> </h2>
+       <h3>Invitation From, <span style="color:#4834DF">{{host_name}}</span> </h3>
+       <hr>
+
+        <h4>Provide no. of RSVP</h4>
+          <form id="mForm" method="post">
+               {% csrf_token %}
+            <div class="form-group">
+                <label for="sel">No. of people</label>
+                <select class="form-control" id="sel" name="number">
+                    {% for i in range%}
+                     <option {% if forloop.last %} selected {% endif %} >{{i}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+              <input id="digest" value="{{digest}}" name="digest" style="display:none">
+               <button type="submit" class="btn btn-primary">Done</button>
+          </form>
+      </div>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+       
+       $("#mForm").submit(function(e){
+       		e.preventDefault();
+       		number = $("#sel").val();
+          digest = $("#digest").val();
+          csrf_token = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+          // console.log(number);
+          // console.log(digest);
+
+       		var postData = {'number': number, 'digest': digest, 'csrfmiddlewaretoken':csrf_token};
+		      $.ajax({
+		            type: "post",
+		            url: "/done/",
+		            data: postData,
+		            contentType: "application/x-www-form-urlencoded",
+		            success: function(responseData, textStatus, jqXHR) {
+		                alert(responseData)
+		            },
+		            error: function(jqXHR, textStatus, errorThrown) {
+		                alert("Something went wrong. Try again.");
+		            }
+		        })
+
+		    });
+
+    </script>
+{% endblock %}
+
+
+
+
+
