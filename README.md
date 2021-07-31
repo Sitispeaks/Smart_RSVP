@@ -4,7 +4,7 @@ This is a Django app for RSVP
 3. pip install -r requirement.txt
 4. python manage.py runserver
 
-Demo video: ``` res_imgs/demo.mov ``` or <a href="https://github.com/Raj1998/smart-RSVP/blob/master/res_imgs/demo.mov">here</a>
+Demo video: ``` res_imgs/demo.mov ``` or <a href="https://github.com/Sitispeaks/Smart_RSVP/blob/main/res_imgs/demo.mov">here</a>
 
 # Screenshots
 ## Dashboard
