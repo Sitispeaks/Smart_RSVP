@@ -1,4 +1,7 @@
-This is a Django app for RSVP
+# Smart RSVP
+ Created a QR code based smart RSVP(Répondez s'il vous plaît) system.
+
+# To set up the app
 1. virtualenv venv
 2. ./venv/Script/activate
 3. pip install -r requirement.txt
